@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('m_hak_akses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_menu');
+            $table->foreignId('id_menu')->references('id')->on('m_menu');
             $table->string('level_hak_akses');
             $table->string('status');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreignId('id_menu')->references('id')->on('m_menu');
         });
     }
 

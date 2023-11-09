@@ -13,22 +13,20 @@ return new class extends Migration
     {
         Schema::create('m_piket', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_user')->references('id')->on('users');
+            $table->foreignId('id_skpd')->references('id')->on('m_skpd');
+            $table->foreignId('id_shift')->references('id')->on('m_shift');
+            $table->foreignId('id_event')->references('id')->on('m_event');
             $table->string('nip');
             $table->string('nama');
             $table->string('alamat');
             $table->string('no_hp');
             $table->string('jabatan');
             $table->string('jadwal');
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_skpd');
-            $table->string('shift');
-            $table->integer('event');
             $table->string('eselon');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreignId('id_user')->references('id')->on('users');
-            $table->foreignId('id_skpd')->references('id')->on('m_skpd');
         });
     }
 

@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_level');
+            $table->foreignId('id_level')->references('id')->on('m_level');
+            $table->foreignId('id_skpd')->references('id')->on('m_skpd');
             $table->string('nama');
             $table->string('username')->unique();
             $table->string('password');
-            $table->timestamp('skpd')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreignId('id_level')->references('id')->on('m_level');
         });
     }
 
