@@ -11,18 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('bkd', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_level');
+            $table->string('nip');
             $table->string('nama');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->timestamp('skpd')->nullable();
-            $table->rememberToken();
+            $table->string('jabatan');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreignId('id_level')->references('id')->on('m_level');
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('bkd');
     }
 };
