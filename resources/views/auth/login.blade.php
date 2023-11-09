@@ -6,7 +6,9 @@
     <head>
         <base href="../../../" />
         <title>Metronic - The World's #1 Selling Bootstrap Admin Template by Keenthemes</title>
+
         <meta charset="utf-8" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description"
             content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
         <meta name="keywords"
@@ -85,7 +87,9 @@
                         <div class="py-20">
                             <!--begin::Form-->
                             <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form"
-                                data-kt-redirect-url="{{ asset('metronic/dist/index.html') }}" action="#">
+                                data-kt-redirect-url="{{ asset('metronic/dist/index.html') }}"
+                                action="{{ route('authLogin') }}" method="POST">
+                                @csrf
                                 <!--begin::Body-->
                                 <div class="card-body">
                                     <!--begin::Heading-->
@@ -108,7 +112,7 @@
                                     <!--end::Input group=-->
                                     <div class="fv-row mb-7">
                                         <!--begin::Password-->
-                                        <input type="text" placeholder="Password" name="password" autocomplete="off"
+                                        <input type="password" placeholder="Password" name="password" autocomplete="off"
                                             data-kt-translate="sign-in-input-password"
                                             class="form-control form-control-solid" />
                                         <!--end::Password-->
@@ -124,7 +128,7 @@
                                     <!--begin::Actions-->
                                     <div class="d-flex flex-stack">
                                         <!--begin::Submit-->
-                                        <button id="kt_sign_in_submit" class="btn btn-primary me-2 flex-shrink-0">
+                                        <button {{-- id="kt_sign_in_submit" --}} class="btn btn-primary me-2 flex-shrink-0">
                                             <!--begin::Indicator label-->
                                             <span class="indicator-label" data-kt-translate="sign-in-submit">Sign
                                                 In</span>

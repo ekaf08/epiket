@@ -23,19 +23,18 @@ class MenuSeeder extends Seeder
             ],
             [
                 'nama_menu' => 'Master',
-                'url' => 'naster',
+                'url' => 'master',
                 'parent' => '0',
                 'icon' => 'master',
                 'status' => true,
-                'order' => 1,
-            ],         
+                'order' => 2,
+            ],
             [
                 'nama_menu' => 'Master SKPD',
                 'url' => 'naster.skpd',
                 'parent' => '2',
                 'icon' => 'master',
                 'status' => true,
-                'order' => 1,
             ],
             [
                 'nama_menu' => 'Master Pengguna',
@@ -43,7 +42,6 @@ class MenuSeeder extends Seeder
                 'parent' => '2',
                 'icon' => 'master',
                 'status' => true,
-                'order' => 1,
             ],
         ];
 

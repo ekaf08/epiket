@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('/category', CategoryController::class);
 
-Route::resource('/menu', MenuController::class);
-Route::get('/', function () {
-    return view('layout.app');
-});
-Route::get('/login', function () {
-    return view('auth.login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/authLogin', [AuthController::class, 'authLogin'])->name('authLogin');
+
+Route::group([
+    'middleware' => ['auth']
+], function () {
+
+    Route::resource('/category', CategoryController::class);
+
+    Route::resource('/menu', MenuController::class);
+    Route::get('/', function () {
+        return view('layout.app');
+    });
 });
