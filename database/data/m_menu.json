@@ -1,0 +1,209 @@
+[
+  {
+    "id_menu": 12.0,
+    "nama_menu": null,
+    "url": "administrasi/esdm_pegawai",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 5.0,
+    "nama_menu": null,
+    "url": "master/skpd_list",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 7.0,
+    "nama_menu": "Administrasi",
+    "url": "administrasi",
+    "parent": "0",
+    "icon": "fa fa-pencil",
+    "status": "1",
+    "order": "3"
+  },
+  {
+    "id_menu": 8.0,
+    "nama_menu": "Data Pegawai",
+    "url": "administrasi/pegawai",
+    "parent": "7",
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 9.0,
+    "nama_menu": "Entri Jadwal Piket",
+    "url": "administrasi/jadwal",
+    "parent": "7",
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 15.0,
+    "nama_menu": "Master Jam",
+    "url": "master/jam",
+    "parent": "2",
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 14.0,
+    "nama_menu": null,
+    "url": "profile",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 16.0,
+    "nama_menu": null,
+    "url": "master/jam_list",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 17.0,
+    "nama_menu": null,
+    "url": "master/editjam",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 18.0,
+    "nama_menu": null,
+    "url": "master/updatejam",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 19.0,
+    "nama_menu": null,
+    "url": "administrasi/edit_pegawai",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 1.0,
+    "nama_menu": "Dashboard",
+    "url": "depan",
+    "parent": "0",
+    "icon": "fa fa-dashboard",
+    "status": "1",
+    "order": "1"
+  },
+  {
+    "id_menu": 2.0,
+    "nama_menu": "Master",
+    "url": "master",
+    "parent": "0",
+    "icon": "fa fa-list-alt",
+    "status": "1",
+    "order": "2"
+  },
+  {
+    "id_menu": 3.0,
+    "nama_menu": "Master SKPD",
+    "url": "master/skpd",
+    "parent": "2",
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 4.0,
+    "nama_menu": "Master Pengguna",
+    "url": "master/pengguna",
+    "parent": "2",
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 6.0,
+    "nama_menu": "Lihat Jadwal",
+    "url": "laporan",
+    "parent": "0",
+    "icon": "fa fa-book",
+    "status": "1",
+    "order": "4"
+  },
+  {
+    "id_menu": 10.0,
+    "nama_menu": "Lihat Jadwal",
+    "url": "laporan/lihat_jadwal",
+    "parent": "6",
+    "icon": null,
+    "status": "0",
+    "order": null
+  },
+  {
+    "id_menu": 11.0,
+    "nama_menu": null,
+    "url": "administrasi/add_pegawai",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 22.0,
+    "nama_menu": "Jadwal Piket",
+    "url": "piket",
+    "parent": "0",
+    "icon": "fa fa-calendar",
+    "status": "1",
+    "order": "5"
+  },
+  {
+    "id_menu": 13.0,
+    "nama_menu": null,
+    "url": "laporan/list_jadwal",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 20.0,
+    "nama_menu": "Cetak Jadwal",
+    "url": "administrasi/cetak",
+    "parent": "7",
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 21.0,
+    "nama_menu": null,
+    "url": "administrasi/cetak_jadwal",
+    "parent": null,
+    "icon": null,
+    "status": "1",
+    "order": null
+  },
+  {
+    "id_menu": 23.0,
+    "nama_menu": "Master Event",
+    "url": "master/event",
+    "parent": "2",
+    "icon": null,
+    "status": "1",
+    "order": null
+  }
+]

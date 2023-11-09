@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('m_hak_akses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_menu')->references('id')->on('m_menu');
-            $table->string('level_hak_akses');
-            $table->string('status');
+            $table->string('level_hak_akses')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

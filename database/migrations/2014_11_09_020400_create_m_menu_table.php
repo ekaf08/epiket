@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('m_menu', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_menu');
-            $table->string('url');
-            $table->string('parent');
-            $table->string('icon');
-            $table->string('status');
-            $table->string('order');
+            $table->string('nama_menu')->nullable();
+            $table->string('url')->nullable();
+            $table->integer('parent')->nullable();
+            $table->string('icon')->nullable();
+            $table->boolean('status')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
