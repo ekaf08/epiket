@@ -17,7 +17,6 @@ class AuthController extends Controller
 
     public function authLogin(Request $request)
     {
-        dd('login', $request->all());
         $validator = $request->validate([
             'username' => 'required',
             'password' => 'required',
@@ -29,5 +28,6 @@ class AuthController extends Controller
             return redirect()->intended('/');
             // return redirect()->intended('/dashboard')->with('success', 'Login Successful!');
         }
+        dd('salah om');
     }
 }

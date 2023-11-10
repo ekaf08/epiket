@@ -13,7 +13,7 @@ class MenuController extends Controller
     public function index()
     {
         // $menus = Menu::with('children')->get();
-        $menus = Menu::with('children')->where('parent', '!=', 0)->get();
+        $menus = Menu::with('children')->whereNotNull('id_parent')->get();
         dd($menus);
     }
 
