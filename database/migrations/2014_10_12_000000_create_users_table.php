@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_level')->references('id')->on('m_level');
+            $table->foreignId('id_role')->references('id')->on('m_role');
             $table->foreignId('id_skpd')->references('id')->on('m_skpd');
             $table->string('nama');
             $table->string('username')->unique();
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

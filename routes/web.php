@@ -19,7 +19,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/authLogin', [AuthController::class, 'authLogin'])->name('authLogin');
 
 Route::group([
-    'middleware' => ['auth']
+    'middleware' => ['auth', 'role:admin']
 ], function () {
 
     Route::resource('/category', CategoryController::class);

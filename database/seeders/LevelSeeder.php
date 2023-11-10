@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Level;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,16 +15,16 @@ class LevelSeeder extends Seeder
     {
         $datas = [
             [
-                'nama_level' => 'admin'
+                'nama_role' => 'admin'
             ],
             [
-                'nama_level' => 'walikota'
+                'nama_role' => 'walikota'
             ],
             [
-                'nama_level' => 'skpd'
+                'nama_role' => 'skpd'
             ],
             [
-                'nama_level' => 'kepala OPD'
+                'nama_role' => 'kepala OPD'
             ],
         ];
 
@@ -32,8 +32,8 @@ class LevelSeeder extends Seeder
             $key['created_at'] = now();
             $key['updated_at'] = null;
 
-            if (!Level::where('nama_level', $key['nama_level'])->first()) {
-                Level::create($key);
+            if (!Role::where('nama_role', $key['nama_role'])->first()) {
+                Role::create($key);
             }
         }
     }

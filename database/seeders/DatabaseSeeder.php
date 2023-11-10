@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             SkpdSeeder::class,
             MenuSeeder::class,
             UserSeeder::class,
+            RoleUserSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Level extends Model
+class RoleUser extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'm_level';
+    protected $table = 'role_user';
     protected $guarded = [];
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }
