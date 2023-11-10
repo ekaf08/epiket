@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_menu')->nullable();
             $table->string('url')->nullable();
-            $table->integer('parent')->nullable();
+            $table->integer('id_parent')->nullable();
             $table->string('icon')->nullable();
             $table->boolean('status')->nullable();
             $table->integer('order')->nullable();
