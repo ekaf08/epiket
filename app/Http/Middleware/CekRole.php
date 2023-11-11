@@ -17,7 +17,7 @@ class CekRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if (!Auth::check()) {
-            return redirect('/login');
+            return redirect('/');
         }
         // dd(Auth::user()->roles->pluck('nama_role'));
         $userRoles = Auth::user()->roles->pluck('nama_role')->first();

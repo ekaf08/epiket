@@ -30,6 +30,40 @@
             type="text/css" />
         <link href="{{ asset('metronic/dist/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
         <!--end::Global Stylesheets Bundle-->
+
+        <style>
+            .colored-toast.swal2-icon-success {
+                background-color: #a5dc86 !important;
+            }
+
+            .colored-toast.swal2-icon-error {
+                background-color: #f27474 !important;
+            }
+
+            .colored-toast.swal2-icon-warning {
+                background-color: #f8bb86 !important;
+            }
+
+            .colored-toast.swal2-icon-info {
+                background-color: #3fc3ee !important;
+            }
+
+            .colored-toast.swal2-icon-question {
+                background-color: #87adbd !important;
+            }
+
+            .colored-toast .swal2-title {
+                color: white;
+            }
+
+            .colored-toast .swal2-close {
+                color: white;
+            }
+
+            .colored-toast .swal2-html-container {
+                color: white;
+            }
+        </style>
     </head>
     <!--end::Head-->
     <!--begin::Body-->
@@ -102,9 +136,9 @@
                                     </div>
                                     <!--begin::Heading-->
                                     <!--begin::Input group=-->
-                                    <div class="fv-row mb-8">
+                                    <div class="fv-row mb-7">
                                         <!--begin::username-->
-                                        <input type="text" placeholder="username" name="username" autocomplete="off"
+                                        <input type="text" placeholder="username" name="username"
                                             data-kt-translate="sign-in-input-username"
                                             class="form-control form-control-solid" />
                                         <!--end::username-->
@@ -118,17 +152,30 @@
                                         <!--end::Password-->
                                     </div>
                                     <!--end::Input group=-->
-                                    <!--begin::Wrapper-->
-                                    <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10">
-                                        <div></div>
-                                        <!--begin::Link-->
-                                        <!--end::Link-->
+
+                                    <!--begin::Alert-->
+                                    <div
+                                        class="alert alert-dismissible bg-danger d-flex flex-column flex-sm-row w-100 p-5 mb-10">
+                                        <!--begin::Icon-->
+                                        <i class="ki-duotone ki-message-text-2 fs-2hx text-light me-4 mb-5 mb-sm-0"><span
+                                                class="path1"></span><span class="path2"></span><span
+                                                class="path3"></span></i> <!--end::Icon-->
+
+                                        <!--begin::Content-->
+                                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                                            <h4 class="mb-2 text-light">Username Atau Password Salah.</h4>
+                                            {{-- <span>The alert component can be used to highlight certain parts of your
+                                                page for higher content visibility.</span> --}}
+                                        </div>
+                                        <!--end::Content-->
                                     </div>
-                                    <!--end::Wrapper-->
+                                    <!--end::Alert-->
+
                                     <!--begin::Actions-->
                                     <div class="d-flex flex-stack">
                                         <!--begin::Submit-->
-                                        <button {{-- id="kt_sign_in_submit" --}} class="btn btn-primary me-2 flex-shrink-0">
+                                        <button {{-- id="kt_sign_in_submit" --}} type="button" onclick="submitForm(this.form)"
+                                            class="btn btn-primary me-2 flex-shrink-0">
                                             <!--begin::Indicator label-->
                                             <span class="indicator-label" data-kt-translate="sign-in-submit">Sign
                                                 In</span>
@@ -148,6 +195,15 @@
                                         <!--end::Social-->
                                     </div>
                                     <!--end::Actions-->
+
+                                    <!--begin::Wrapper-->
+                                    <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10">
+                                        <div></div>
+                                        <!--begin::Link-->
+                                        <!--end::Link-->
+                                    </div>
+                                    <!--end::Wrapper-->
+
                                 </div>
                                 <!--begin::Body-->
                             </form>
@@ -184,6 +240,49 @@
         <script src="{{ asset('metronic/dist/assets/js/custom/authentication/sign-in/i18n.js') }}"></script>
         <!--end::Custom Javascript-->
         <!--end::Javascript-->
+
+        <script>
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast',
+                },
+            });
+
+            function submitForm(originalForm) {
+                $.post({
+                        url: `{{ route('authLogin') }}`,
+                        data: new FormData(originalForm),
+                        dataType: 'json',
+                        contentType: false,
+                        cache: false,
+                        processData: false
+                    })
+                    .done(response => {
+                        Toast.fire({
+                                icon: 'success',
+                                position: 'center',
+                                title: 'Berhasil',
+                            })
+                            .then(function() {
+                                window.location.href = "{{ url('/dashboard') }}";
+                            });
+                    })
+                    .fail(errors => {
+                        console.log(errors);
+                        Toast.fire({
+                            icon: 'error',
+                            position: 'center',
+                            title: 'Username Atau Password Salah',
+                        })
+                    });
+            }
+        </script>
     </body>
     <!--end::Body-->
 

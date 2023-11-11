@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -17,17 +18,27 @@ class AuthController extends Controller
 
     public function authLogin(Request $request)
     {
-        $validator = $request->validate([
+        $validator = Validator::make($request->all(), [
             'username' => 'required',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($validator)) {
-            $request->session()->regenerate();
+        $username = $request->username;
+        $password = $request->password;
 
-            return redirect()->intended('/');
+        if (Auth::guard('web')->attempt(['username' => $username, 'password' => $password])) {
+            // $request->session()->regenerate();
+
+            return response()->json([
+                'success' => true
+            ], 200);
             // return redirect()->intended('/dashboard')->with('success', 'Login Successful!');
         }
-        dd('salah om');
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+                'message' => 'Username Atau Password Salah'
+            ], 401);
+        }
     }
 }

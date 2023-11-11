@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/authLogin', [AuthController::class, 'authLogin'])->name('authLogin');
 
 Route::group([
@@ -25,7 +25,13 @@ Route::group([
     Route::resource('/category', CategoryController::class);
 
     Route::resource('/menu', MenuController::class);
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('layout.app');
     });
 });
+// Route::group([
+//     'middleware' => ['auth', 'role:skpd']
+// ], function () {
+
+//     dd('disinisek');
+// });

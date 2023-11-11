@@ -22,6 +22,13 @@ class UserSeeder extends Seeder
                 'username' => 'ekaf',
                 'password' => Hash::make('admins'),
             ],
+            [
+                'id_role' => '3',
+                'id_skpd' => '1',
+                'nama' => 'udin',
+                'username' => 'udin',
+                'password' => Hash::make('admins'),
+            ],
         ];
 
         foreach ($users as $user) {
