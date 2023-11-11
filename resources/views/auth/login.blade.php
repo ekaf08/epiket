@@ -71,6 +71,8 @@
     <body id="kt_body" class="app-blank">
         <!--begin::Theme mode setup on page load-->
         <script>
+            $("#div-salah").hide();
+
             var defaultThemeMode = "light";
             var themeMode;
             if (document.documentElement) {
@@ -138,7 +140,7 @@
                                     <!--begin::Input group=-->
                                     <div class="fv-row mb-7">
                                         <!--begin::username-->
-                                        <input type="text" placeholder="username" name="username"
+                                        <input type="text" id="username" placeholder="username" name="username"
                                             data-kt-translate="sign-in-input-username"
                                             class="form-control form-control-solid" />
                                         <!--end::username-->
@@ -146,16 +148,17 @@
                                     <!--end::Input group=-->
                                     <div class="fv-row mb-7">
                                         <!--begin::Password-->
-                                        <input type="password" placeholder="Password" name="password" autocomplete="off"
-                                            data-kt-translate="sign-in-input-password"
+                                        <input type="password" id="password" placeholder="Password" name="password"
+                                            autocomplete="off" data-kt-translate="sign-in-input-password"
                                             class="form-control form-control-solid" />
                                         <!--end::Password-->
                                     </div>
                                     <!--end::Input group=-->
 
                                     <!--begin::Alert-->
-                                    <div
-                                        class="alert alert-dismissible bg-danger d-flex flex-column flex-sm-row w-100 p-5 mb-10">
+                                    <div id="div-salah"
+                                        class="alert alert-dismissible bg-danger d-flex flex-column flex-sm-row w-100 p-5 mb-10"
+                                        style="display: none !important;">
                                         <!--begin::Icon-->
                                         <i class="ki-duotone ki-message-text-2 fs-2hx text-light me-4 mb-5 mb-sm-0"><span
                                                 class="path1"></span><span class="path2"></span><span
@@ -246,7 +249,7 @@
                 toast: true,
                 position: 'center',
                 showConfirmButton: false,
-                timer: 1000,
+                timer: 2000,
                 timerProgressBar: true,
                 iconColor: 'white',
                 customClass: {
@@ -255,32 +258,44 @@
             });
 
             function submitForm(originalForm) {
-                $.post({
-                        url: `{{ route('authLogin') }}`,
-                        data: new FormData(originalForm),
-                        dataType: 'json',
-                        contentType: false,
-                        cache: false,
-                        processData: false
+                var username = $("#username").val();
+                var password = $("#password").val();
+
+                if (username === '' && password === '') {
+                    Toast.fire({
+                        icon: 'error',
+                        position: 'center',
+                        title: 'Username Dan Password Harus Di Isi',
                     })
-                    .done(response => {
-                        Toast.fire({
-                                icon: 'success',
-                                position: 'center',
-                                title: 'Berhasil',
-                            })
-                            .then(function() {
-                                window.location.href = "{{ url('/dashboard') }}";
-                            });
-                    })
-                    .fail(errors => {
-                        console.log(errors);
-                        Toast.fire({
-                            icon: 'error',
-                            position: 'center',
-                            title: 'Username Atau Password Salah',
+                } else {
+                    $.post({
+                            url: `{{ route('authLogin') }}`,
+                            data: new FormData(originalForm),
+                            dataType: 'json',
+                            contentType: false,
+                            cache: false,
+                            processData: false
                         })
-                    });
+                        .done(response => {
+                            Toast.fire({
+                                    icon: 'success',
+                                    position: 'center',
+                                    title: 'Berhasil',
+                                })
+                                .then(function() {
+                                    window.location.href = "{{ url('/dashboard') }}";
+                                });
+                        })
+                        .fail(errors => {
+                            Toast.fire({
+                                icon: 'error',
+                                position: 'center',
+                                title: 'Username Atau Password Salah',
+                            })
+                            $("#div-salah").show();
+                        });
+                }
+
             }
         </script>
     </body>
