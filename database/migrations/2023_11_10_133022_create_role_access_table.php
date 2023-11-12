@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('role_access', function (Blueprint $table) {
             $table->id();
             $table->foreignId('role_id')->references('id')->on('m_role');
             $table->string('as_role')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->string('as_user')->nullable();
+            $table->foreignId('menu_id')->references('id')->on('m_menu');
+            $table->string('as_menu')->nullable();
             $table->integer('sort')->nullable();
             $table->boolean('view')->default('f');
             $table->boolean('insert')->default('f');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('role_access');
     }
 };

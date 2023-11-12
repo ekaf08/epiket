@@ -33,4 +33,9 @@ class Menu extends Model
     {
         return $this->hasMany(Menu::class, 'id_parent');
     }
+
+    public function menu()
+    {
+        return $this->belongsToMany(RoleAccess::class, 'menu_id');
+    }
 }
