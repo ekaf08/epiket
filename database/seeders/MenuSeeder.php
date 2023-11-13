@@ -18,6 +18,7 @@ class MenuSeeder extends Seeder
                 'url' => 'dashboard',
                 'id_parent' => null,
                 'icon' => 'dasboard',
+                'single' => true,
                 'status' => true,
                 'order' => 1,
             ],

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->integer('id_parent')->nullable();
             $table->string('icon')->nullable();
+            $table->boolean('single')->nullable()->default(false);
             $table->boolean('status')->nullable();
             $table->integer('order')->nullable();
             $table->timestamps();
