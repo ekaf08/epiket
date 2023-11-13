@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ShiftController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +23,13 @@ Route::group([
     'middleware' => ['auth', 'role']
 ], function () {
 
-    Route::resource('/category', CategoryController::class);
+    Route::get('/master/jam/data', [ShiftController::class, 'data'])->name('jam.data');
+    Route::resource('/master/jam', ShiftController::class)->except('create, edit');
 
     Route::resource('/menu', MenuController::class);
     Route::get('/dashboard', function () {
         return view('layout.app');
-    });
+    })->name('dashboard');
 });
 // Route::group([
 //     'middleware' => ['auth', 'role:skpd']

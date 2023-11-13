@@ -2157,17 +2157,44 @@
                     </div>
 
                     @foreach ($getmenu as $menu)
-                        @if ($menu->id_parent == null)
-                            <p>{{ $menu->nama_menu }}</p>
-                            {{-- @dd($menu, $menu->nama_menu) --}}
+                        @if ($menu->id_parent == null && $menu->single == true)
+                            <!--begin::Menu Item-->
+                            <div class="menu-item">
+                                <!--begin::Menu link-->
+                                <a class="menu-link" href="{{ url($menu->url) }}">
+                                    <!--begin::Icon-->
+                                    <span class="menu-icon">
+                                        <i class="{{ $menu->icon }}"></i>
+                                    </span>
+                                    <!--end::Icon-->
+                                    <!--begin::Title-->
+                                    <span class="menu-title">{{ $menu->nama_menu }}</span>
+                                    <!--end::Title-->
+                                </a>
+                                <!--end::Menu link-->
+                            </div>
+                            <!--end::Menu Item-->
                         @endif
-                        @if ($menu->id_parent != null)
-                            <p>{{ $menu->nama_menu }}</p>
+
+                        @if ($menu->id_parent == null && $menu->single == false)
+                            <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                                <span class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="{{ $menu->icon }}"></i>
+                                    </span>
+                                    <span class="menu-title">{{ $menu->nama_menu }}</span>
+                                    <span class="menu-arrow"></span>
+                                </span>
+
+                                @if ($menu->id_parent != null && $menu->single == false)
+                                    @dd($menu->menu_id)
+                                @endif
+                            </div>
                         @endif
                     @endforeach
-                    {{-- @dd($getmenu) --}}
+
                     <!--end::Heading-->
-                    {{-- <!--begin:Menu item-->
+                    <!--begin:Menu item-->
                     <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
@@ -2219,8 +2246,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link"
-                                    href="../../demo38/dist/dashboards/online-courses.html">
+                                <a class="menu-link" href="../../demo38/dist/dashboards/online-courses.html">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -2246,8 +2272,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/bidding.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/bidding.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2271,8 +2296,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/call-center.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/call-center.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2284,8 +2308,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/logistics.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/logistics.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2297,8 +2320,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/website-analytics.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/website-analytics.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2323,8 +2345,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/store-analytics.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/store-analytics.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2336,8 +2357,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/social.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/social.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2349,8 +2369,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/delivery.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/delivery.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2362,8 +2381,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/crypto.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/crypto.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2375,8 +2393,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/school.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/school.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2388,8 +2405,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"
-                                        href="../../demo38/dist/dashboards/podcast.html">
+                                    <a class="menu-link" href="../../demo38/dist/dashboards/podcast.html">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2414,20 +2430,17 @@
                             <div class="menu-item">
                                 <div class="menu-content">
                                     <a class="btn btn-flex btn-color-primary d-flex flex-stack fs-base p-0 ms-2 mb-2 toggle collapsible collapsed"
-                                        data-bs-toggle="collapse"
-                                        href="#kt_app_sidebar_menu_dashboards_collapse"
+                                        data-bs-toggle="collapse" href="#kt_app_sidebar_menu_dashboards_collapse"
                                         data-kt-toggle-text="Show Less">
                                         <span data-kt-toggle-text-target="true">Show 12 More</span>
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen036.svg-->
                                         <span class="svg-icon toggle-on svg-icon-2 me-0">
                                             <svg width="24" height="24" viewBox="0 0 24 24"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect opacity="0.3" x="2" y="2" width="20"
-                                                    height="20" rx="5"
-                                                    fill="currentColor" />
-                                                <rect x="6.0104" y="10.9247" width="12"
-                                                    height="2" rx="1"
-                                                    fill="currentColor" />
+                                                <rect opacity="0.3" x="2" y="2" width="20" height="20"
+                                                    rx="5" fill="currentColor" />
+                                                <rect x="6.0104" y="10.9247" width="12" height="2"
+                                                    rx="1" fill="currentColor" />
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
@@ -2435,16 +2448,13 @@
                                         <span class="svg-icon toggle-off svg-icon-2 me-0">
                                             <svg width="24" height="24" viewBox="0 0 24 24"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect opacity="0.3" x="2" y="2" width="20"
-                                                    height="20" rx="5"
+                                                <rect opacity="0.3" x="2" y="2" width="20" height="20"
+                                                    rx="5" fill="currentColor" />
+                                                <rect x="10.8891" y="17.8033" width="12" height="2"
+                                                    rx="1" transform="rotate(-90 10.8891 17.8033)"
                                                     fill="currentColor" />
-                                                <rect x="10.8891" y="17.8033" width="12"
-                                                    height="2" rx="1"
-                                                    transform="rotate(-90 10.8891 17.8033)"
-                                                    fill="currentColor" />
-                                                <rect x="6.01041" y="10.9247" width="12"
-                                                    height="2" rx="1"
-                                                    fill="currentColor" />
+                                                <rect x="6.01041" y="10.9247" width="12" height="2"
+                                                    rx="1" fill="currentColor" />
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
@@ -2579,8 +2589,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/overview.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/overview.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2592,8 +2601,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/settings.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/settings.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2605,8 +2613,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/security.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/security.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2618,8 +2625,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/activity.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/activity.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2631,8 +2637,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/billing.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/billing.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2644,8 +2649,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/statements.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/statements.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2657,8 +2661,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/referrals.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/referrals.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -2670,8 +2673,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/account/api-keys.html">
+                                        <a class="menu-link" href="../../demo38/dist/account/api-keys.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3306,8 +3308,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/contact.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/contact.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3319,8 +3320,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/licenses.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/licenses.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3332,8 +3332,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/sitemap.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/sitemap.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3362,8 +3361,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/social/feeds.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/social/feeds.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3375,8 +3373,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/social/activity.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/social/activity.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3388,8 +3385,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/social/followers.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/social/followers.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3401,8 +3397,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/social/settings.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/social/settings.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3431,8 +3426,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/blog/home.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/blog/home.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3444,8 +3438,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/blog/post.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/blog/post.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3474,8 +3467,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/faq/classic.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/faq/classic.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3487,8 +3479,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/faq/extended.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/faq/extended.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3517,8 +3508,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/pricing/column.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/pricing/column.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3530,8 +3520,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/pricing/table.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/pricing/table.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3560,8 +3549,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/careers/list.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/careers/list.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3573,8 +3561,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/pages/careers/apply.html">
+                                        <a class="menu-link" href="../../demo38/dist/pages/careers/apply.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3603,8 +3590,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/widgets/lists.html">
+                                        <a class="menu-link" href="../../demo38/dist/widgets/lists.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3616,8 +3602,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/widgets/statistics.html">
+                                        <a class="menu-link" href="../../demo38/dist/widgets/statistics.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3629,8 +3614,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/widgets/charts.html">
+                                        <a class="menu-link" href="../../demo38/dist/widgets/charts.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3642,8 +3626,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/widgets/mixed.html">
+                                        <a class="menu-link" href="../../demo38/dist/widgets/mixed.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3655,8 +3638,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/widgets/tables.html">
+                                        <a class="menu-link" href="../../demo38/dist/widgets/tables.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3668,8 +3650,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/widgets/feeds.html">
+                                        <a class="menu-link" href="../../demo38/dist/widgets/feeds.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3715,8 +3696,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/list.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/list.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3728,8 +3708,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/project.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/project.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3741,8 +3720,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/targets.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/targets.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3754,8 +3732,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/budget.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/budget.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3767,8 +3744,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/users.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/users.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3780,8 +3756,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/files.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/files.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3793,8 +3768,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/activity.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/activity.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -3806,8 +3780,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/projects/settings.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/projects/settings.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4125,8 +4098,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/ecommerce/settings.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/ecommerce/settings.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4235,8 +4207,7 @@
                                     </div>
                                     <!--end:Menu item-->
                                     <!--begin:Menu item-->
-                                    <div data-kt-menu-trigger="click"
-                                        class="menu-item menu-accordion mb-1">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                                         <!--begin:Menu link-->
                                         <span class="menu-link">
                                             <span class="menu-bullet">
@@ -4279,8 +4250,7 @@
                                     </div>
                                     <!--end:Menu item-->
                                     <!--begin:Menu item-->
-                                    <div data-kt-menu-trigger="click"
-                                        class="menu-item menu-accordion mb-1">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                                         <!--begin:Menu link-->
                                         <span class="menu-link">
                                             <span class="menu-bullet">
@@ -4325,8 +4295,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/support-center/faq.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/support-center/faq.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4379,8 +4348,7 @@
                                 <!--begin:Menu sub-->
                                 <div class="menu-sub menu-sub-accordion">
                                     <!--begin:Menu item-->
-                                    <div data-kt-menu-trigger="click"
-                                        class="menu-item menu-accordion mb-1">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                                         <!--begin:Menu link-->
                                         <span class="menu-link">
                                             <span class="menu-bullet">
@@ -4511,8 +4479,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/customers/list.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/customers/list.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4524,8 +4491,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/customers/view.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/customers/view.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4567,8 +4533,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/subscriptions/list.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/subscriptions/list.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4580,8 +4545,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/subscriptions/add.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/subscriptions/add.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4593,8 +4557,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/subscriptions/view.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/subscriptions/view.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4679,8 +4642,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/invoices/create.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/invoices/create.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4722,8 +4684,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/file-manager/files.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/file-manager/files.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4735,8 +4696,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/file-manager/blank.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/file-manager/blank.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4778,8 +4738,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/inbox/listing.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/inbox/listing.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4794,8 +4753,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/inbox/compose.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/inbox/compose.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4807,8 +4765,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/inbox/reply.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/inbox/reply.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4837,8 +4794,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/chat/private.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/chat/private.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4850,8 +4806,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/chat/group.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/chat/group.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -4863,8 +4818,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/apps/chat/drawer.html">
+                                        <a class="menu-link" href="../../demo38/dist/apps/chat/drawer.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -5414,8 +5368,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link"
-                                            href="../../demo38/dist/utilities/search/users.html">
+                                        <a class="menu-link" href="../../demo38/dist/utilities/search/users.html">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
@@ -5464,8 +5417,8 @@
                                 <a class="menu-link"
                                     href="https://preview.keenthemes.com/html/metronic/docs/base/utilities"
                                     target="_blank" title="Check out over 200 in-house components"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
-                                    data-bs-dismiss="click" data-bs-placement="right">
+                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
+                                    data-bs-placement="right">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -5477,11 +5430,10 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link"
-                                    href="https://preview.keenthemes.com/html/metronic/docs"
+                                <a class="menu-link" href="https://preview.keenthemes.com/html/metronic/docs"
                                     target="_blank" title="Check out the complete documentation"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
-                                    data-bs-dismiss="click" data-bs-placement="right">
+                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
+                                    data-bs-placement="right">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -5496,8 +5448,8 @@
                                 <a class="menu-link"
                                     href="https://preview.keenthemes.com/metronic8/demo38/layout-builder.html"
                                     title="Build your layout and export HTML for server side integration"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
-                                    data-bs-dismiss="click" data-bs-placement="right">
+                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
+                                    data-bs-placement="right">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -5523,7 +5475,7 @@
                         </div>
                         <!--end:Menu sub-->
                     </div>
-                    <!--end:Menu item--> --}}
+                    <!--end:Menu item-->
                 </div>
                 <!--end::Sidebar menu-->
             </div>
