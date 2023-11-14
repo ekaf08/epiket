@@ -200,7 +200,7 @@
                                         @if ($submenu->id_parent == $menu->id && $submenu->id_parent != null)
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ url($submenu->url) }}">
+                                                <a class="menu-link" href="{{ route($submenu->url) }}">
                                                     <span class="menu-bullet">
                                                         <span class="bullet bullet-dot"></span>
                                                     </span>
