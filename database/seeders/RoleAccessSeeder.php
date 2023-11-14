@@ -144,6 +144,32 @@ class RoleAccessSeeder extends Seeder
                 'import' => true,
                 'export' => true,
             ],
+            [
+                'role_id' => 1,
+                'as_role' => 'admin',
+                'menu_id' => 10,
+                'as_menu' => 'Lihat Jadwal',
+                'sort' => null,
+                'view' => true,
+                'insert' => true,
+                'update' => true,
+                'delete' => true,
+                'import' => true,
+                'export' => true,
+            ],
+            [
+                'role_id' => 1,
+                'as_role' => 'admin',
+                'menu_id' => 11,
+                'as_menu' => 'Jadwal Piket',
+                'sort' => null,
+                'view' => true,
+                'insert' => true,
+                'update' => true,
+                'delete' => true,
+                'import' => true,
+                'export' => true,
+            ],
         ];
 
         foreach ($datas as $data) {

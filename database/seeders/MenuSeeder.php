@@ -26,7 +26,7 @@ class MenuSeeder extends Seeder
                 'nama_menu' => 'Master',
                 'url' => 'master',
                 'id_parent' => null,
-                'icon' => 'fa-solid fa-boxes-stacked',
+                'icon' => 'fa-solid fa-boxes-stacked fs-2',
                 'status' => true,
                 'order' => 2,
             ],
@@ -79,6 +79,24 @@ class MenuSeeder extends Seeder
                 'id_parent' => '7',
                 'icon' => 'master',
                 'status' => true,
+            ],
+            [
+                'nama_menu' => 'Lihat Jadwal',
+                'url' => '/dashboard1',
+                'id_parent' => null,
+                'icon' => 'fa-solid fa-clipboard-list fs-2',
+                'single' => true,
+                'status' => true,
+                'order' => 4,
+            ],
+            [
+                'nama_menu' => 'Jadwal Piket',
+                'url' => '/dashboard2',
+                'id_parent' => null,
+                'icon' => 'fa-solid fa-calendar-day fs-2',
+                'single' => true,
+                'status' => true,
+                'order' => 5,
             ],
         ];
 
