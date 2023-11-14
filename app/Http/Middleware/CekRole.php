@@ -22,11 +22,12 @@ class CekRole
             return redirect('/');
         }
 
-        // dd(Auth::user()->id_role);
         $role_auth = Auth::user()->id_role;
         $getmenu = Role::leftJoin('role_access', 'role_access.role_id', 'm_role.id')
             ->leftJoin('m_menu', 'role_access.menu_id', 'm_menu.id')
-            ->where('role_access.role_id', $role_auth)->get();
+            ->where('role_access.role_id', $role_auth)
+            ->orderBy('m_menu.order', 'asc')
+            ->get();
 
         // $getmenu = Menu::leftJoin('role_access', 'role_access.menu_id', 'm_menu.id')
         //     ->leftJoin('m_role', 'm_role.id', 'role_access.role_id')
@@ -34,21 +35,8 @@ class CekRole
         //     ->select('m_menu.id as idm', 'm_menu.*', 'role_access.*', 'm_role.id')
         //     ->get();
 
-        // $getmenu = Role::with('menu')->where('role_access.role_id', Auth::user()->id_role);
-        // dd($getmenu);
         view()->share('getmenu', $getmenu);
         return $next($request);
-
-
-        // dd(Auth::user()->roles->pluck('nama_role'));
-        // $userRoles = Auth::user()->roles->pluck('nama_role')->first();
-        // dd($userRoles);
-
-        // foreach ($roles as $role) {
-        //     if (in_array($role, $userRoles)) {
-        //         return $next($request);
-        //     }
-        // }
 
         return abort(403, 'Unauthorized');
     }

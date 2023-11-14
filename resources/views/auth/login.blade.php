@@ -281,10 +281,10 @@
                                     icon: 'success',
                                     position: 'center',
                                     title: 'Berhasil',
+                                    timer: 1500,
                                 })
-                                .then(function() {
-                                    window.location.href = "{{ url('/dashboard') }}";
-                                });
+                                .then(function() {});
+                            window.location.href = "{{ url('/dashboard') }}";
                         })
                         .fail(errors => {
                             Toast.fire({

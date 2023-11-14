@@ -147,7 +147,7 @@
                                         <div class="d-flex flex-column justify-content-start fw-semibold">
                                             <span class="fs-6 fw-semibold">Olivia Bold</span>
                                             <span class="fs-7 fw-semibold text-muted">Software
-                                                Engineer</span>
+                                                Engineer123</span>
                                         </div>
                                         <!--end::Title-->
                                     </a>
@@ -2155,7 +2155,7 @@
                         <div class="app-sidebar-separator separator"></div>
                         <!--end::Separator-->
                     </div>
-
+                    {{-- @dd($getmenu) --}}
                     @foreach ($getmenu as $menu)
                         @if ($menu->id_parent == null && $menu->single == true)
                             <!--begin::Menu Item-->
@@ -2191,18 +2191,21 @@
                             <div class="menu-sub menu-sub-accordion">
                                 <div class="menu-sub menu-sub-accordion">
                                     <!--begin:Menu item-->
-                                    @if ($menu->id_parent != null && $menu->single == false)
-                                        <div class="menu-item">
-                                            <!--begin:Menu link-->
-                                            <a class="menu-link" href="{{ url($menu->url) }}">
-                                                <span class="menu-bullet">
-                                                    <span class="bullet bullet-dot"></span>
-                                                </span>
-                                                <span class="menu-title">{{ $menu->nama_menu }}</span>
-                                            </a>
-                                            <!--end:Menu link-->
-                                        </div>
-                                    @endif
+                                    @foreach ($getmenu as $submenu)
+                                        @if ($submenu->id_parent == $menu->id && $submenu->id_parent != null)
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ url($submenu->url) }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ $submenu->nama_menu }}</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        @endif
+                                    @endforeach
+
                                     <!--end:Menu item-->
                                 </div>
                                 <!--End Sub Menu (Children)-->
@@ -2221,3 +2224,4 @@
 
     </div>
     <!--end::Wrapper-->
+</div>
