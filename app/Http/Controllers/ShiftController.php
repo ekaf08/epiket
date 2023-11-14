@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class ShiftController extends Controller
 {
@@ -11,7 +13,12 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        //
+        $url = 'jam.index';
+        $permision = Role::getAkses($url);
+        if ($permision) {
+            return view('master.shift.index');
+        }
+        return view('error.403');
     }
 
     /**
